@@ -43030,11 +43030,12 @@ table.wishlist_table {
     font-weight: 900;
     float: right;
   }
-  .header-nav.w3menu .nav > li .mega-menu .has-child.open > a:before .menu-item-has-children.open > a:before,
-  .header-nav.w3menu .nav > li .sub-menu .has-child.open > a:before .menu-item-has-children.open > a:before {
-    content: "\f078";
-    background: #333;
-  }
+.header-nav.w3menu .nav > li .mega-menu .has-child.open > a::before,
+.header-nav.w3menu .nav > li .sub-menu .has-child.open > a::before,
+.menu-item-has-children.open > a::before {
+  content: "\f078";
+  background: #333;
+}
 }
 .header-nav.w3menu .nav > li .mega-menu li,
 .header-nav.w3menu .nav > li .sub-menu li {
