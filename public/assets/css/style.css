@@ -41536,11 +41536,13 @@ table.wishlist_table {
     font-weight: 900;
     float: right;
   }
-  .header-nav .nav > li .mega-menu .has-child.open > a:before .menu-item-has-children.open > a:before,
-  .header-nav .nav > li .sub-menu .has-child.open > a:before .menu-item-has-children.open > a:before {
-    content: "\f078";
-    background: #333;
-  }
+.header-nav .nav > li .mega-menu .has-child.open > a::before,
+.header-nav .nav > li .sub-menu .has-child.open > a::before,
+.menu-item-has-children.open > a::before {
+  content: "\f078";
+  background: #333;
+}
+
 }
 .header-nav .nav > li .mega-menu li,
 .header-nav .nav > li .sub-menu li {
