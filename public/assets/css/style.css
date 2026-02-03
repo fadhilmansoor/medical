@@ -45093,9 +45093,7 @@ table.wishlist_table {
   color: var(--bs-primary);
 }
 
-footer {
-  background-image: url();
-}
+
 @media only screen and (max-width: 767px) {
   footer .row {
     --bs-gutter-x: 10px;
