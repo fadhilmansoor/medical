@@ -24,18 +24,6 @@ function Services() {
                         <Whychoose />
                     </div>
                 </section>
-                <section className="content-inner">
-                    <div className="container">
-                        <div className="section-head style-1 text-center">
-                            <h2 className="title wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.7s">Choose Your Optimal Plan</h2>
-                            <p className="wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.7s">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                        </div>
-                        <Pricing />
-                    </div>
-                </section>
-                <section className="clearfix p-t50 overlay-secondary-dark bg-primary background-blend-multiply overflow-hidden" style={{ backgroundImage: `url(${IMAGES.bg3.src})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right center', backgroundSize: 'cover' }}>
-                    <RealPatient />
-                </section>
                 <Frequently />
             </main>
             <Footer />            

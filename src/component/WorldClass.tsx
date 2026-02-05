@@ -12,23 +12,7 @@ function WorldClass() {
                         <div className="dz-media">
                             <Image src={IMAGES.about1} alt="" />
                         </div>
-                        <div className="item1" data-bottom-top="transform: translateY(-50px)" data-top-bottom="transform: translateY(50px)">
-                            <div className="info-widget style-7">
-                                <div className="widget-content bg-secondary">
-                                    Video Call Support
-                                </div>
-                                <div className="widget-media">
-                                    <Image src={IMAGES.about2} alt="" />
-                                    <div className="call-widget">
-                                        <Link href={"#"} scroll={false}> <Image src={IMAGES.camerasvg} alt="" /> </Link>
-                                        <Link href={"#"} scroll={false}> <Image src={IMAGES.massagesvg} alt="" /> </Link>
-                                        <Link href={"#"} scroll={false} className="active"> <Image src={IMAGES.callsvg} alt="" /> </Link>
-                                        <Link href={"#"} scroll={false}> <Image src={IMAGES.mikesvg} alt="" /> </Link>
-                                        <Link href={"#"} scroll={false}> <Image src={IMAGES.videosvg} alt="" /> </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                         <div className="item2" data-bottom-top="transform: translateY(50px)" data-top-bottom="transform: translateY(-50px)">
                             <div className="info-widget style-6 bg-primary">
                                 <div className="info-icon bg-secondary">

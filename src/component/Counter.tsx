@@ -8,7 +8,7 @@ function Counter() {
     return (
         <>
             <section className="content-inner-3 bg-secondary background-blend-multiply bg-img-fix" 
-                style={{ backgroundImage: `URL(${IMAGES.bg2.src})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'right center' }}
+                style={{ color:"white",backgroundImage: `URL(${IMAGES.bg2.src})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'right center' }}
             >
                 <div className="container">
                     <div className="row align-items-sm-center">

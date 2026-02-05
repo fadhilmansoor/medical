@@ -14,9 +14,10 @@ import RealPatient from "@/component/RealPatient";
 import Howitwork from "@/component/Howitwork";
 import MeetDr from "@/component/MeetDr";
 import Frequently from "@/component/Frequently";
-import Awards from "@/component/Awards";
+
 import StayInformed from "@/component/StayInformed";
 import MapWraper from "@/component/MapWraper";
+import SliderBanner from "./silderbanner"; // Import SliderBanner
 
 function HomePage() {
     
@@ -45,11 +46,11 @@ function HomePage() {
                                 </div>
                                 <div className="col-lg-6 wow fadeInRight" data-wow-delay="0.8s" data-wow-duration="0.8s">
                                     <div className="hero-thumbnail" data-bottom-top="transform: translateY(-50px)" data-top-bottom="transform: translateY(50px)">
-                                        <Image className="thumbnail" src={IMAGES.herobanner1} alt="" />
+                                       <SliderBanner/>
                                         <div className="circle-wrapper">
-                                            <span className="circle1"></span>
+                                            {/* <span className="circle1"></span>
                                             <span className="circle2"></span>
-                                            <span className="circle3"></span>
+                                            <span className="circle3"></span> */}
                                             <div className="item1">
                                                 <Image src={IMAGES.herobannerheart} alt="" />
                                             </div>
@@ -156,7 +157,7 @@ function HomePage() {
                                 </Link>
                             </div>
                         </div>
-                        <EmpolyBlog />
+                     
                     </div>
                 </section>
                 <section className="clearfix p-t50 overlay-secondary-dark bg-primary background-blend-multiply overflow-hidden" 
@@ -165,9 +166,7 @@ function HomePage() {
                     <RealPatient />
                 </section>
                 <Howitwork />
-                <MeetDr />
                 <Frequently />
-                <Awards />
                 <StayInformed />
                 <MapWraper />                 
             </main >

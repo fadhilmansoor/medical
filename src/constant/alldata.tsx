@@ -9,51 +9,48 @@ export const headerinfo = [
     { image: IMAGES.svgicon2, title: 'Email Supports', paragraph: <Link href="mailto:email@domain.com" className="text-secondary">email@domain.com</Link>, },
     { image: IMAGES.svgicon3, title: 'Online Appointment', paragraph: <span>Book Now<i className="feather icon-arrow-right" /></span>, },
     { image: IMAGES.svgicon4, title: 'Supports', paragraph: '24x7 Supports', },
-    { image: IMAGES.svgicon5, title: 'Payment', paragraph: <span>Pay Online <i className="feather icon-arrow-right" /></span>, },
-    { image: IMAGES.svgicon6, title: 'My Cart', paragraph: '2 Items', },
 ]
 
 
 
 export type HeaderContentItem = {
-  title: string;
-  to: string;
-  image?: string | StaticImageData;
+    title: string;
+    to: string;
+    image?: string | StaticImageData;
 };
 
 export type HeaderItem = {
-  title: string;
-  to?: string;
-  classChange?: string;
-  content?: HeaderContentItem[];
+    title: string;
+    to?: string;
+    classChange?: string;
+    content?: HeaderContentItem[];
 };
 
 
-export const headerdata : HeaderItem[] = [
+export const headerdata: HeaderItem[] = [
     {
         title: "Home",
-        classChange: "has-mega-menu",
-        content: [
-            { title: "01 Skin Care", to: "https://next-clinicmaster-skincare.vercel.app/", image: IMAGES.demohome3, },
-            { title: "02 Dentist", to: "https://next-clinicmaster-dentist.vercel.app/", image: IMAGES.demohome2, },
-            { title: "03 Medical", to: "/", image: IMAGES.demohome1, },
-        ],
+        to: "/",
     },
+
     {
-        title: "Pages",
-        classChange: "sub-menu-down",
-        content: [
-            { title: "About Us", to: "/about-us" },
-            { title: "Appointment", to: "/appointment" },
-            { title: "Pricing Table", to: "/pricing-table" },
-            { title: "Patient Info", to: "/patient-info" },
-            { title: "Testimonial", to: "/testimonial" },
-            { title: "Faqs", to: "/faqs" },
-            { title: "Error 404", to: "/error-404" },
-            { title: "Coming Soon", to: "/coming-soon" },
-            { title: "Under construction", to: "/under-construction" },
-        ],
+        title: "About Us",
+        to: "/about-us",
+
+        // Keep for future use
+        // classChange: "sub-menu-down",
+        // content: [
+        //   { title: "Appointment", to: "/appointment" },
+        //   { title: "Pricing Table", to: "/pricing-table" },
+        //   { title: "Patient Info", to: "/patient-info" },
+        //   { title: "Testimonial", to: "/testimonial" },
+        //   { title: "Faqs", to: "/faqs" },
+        //   { title: "Error 404", to: "/error-404" },
+        //   { title: "Coming Soon", to: "/coming-soon" },
+        //   { title: "Under construction", to: "/under-construction" },
+        // ],
     },
+
     {
         title: "Team",
         classChange: "sub-menu-down",
@@ -61,6 +58,10 @@ export const headerdata : HeaderItem[] = [
             { title: "Team", to: "/team" },
             { title: "Team Detail", to: "/team-detail" },
         ],
+    },
+    {
+        title: "Gallery",
+        to: "/gallery",
     },
     {
         title: "Services",
@@ -97,10 +98,6 @@ export const footerdata2 = [
         link1: '#', link2: '#', link3: '/contact-us', link4: '/blog-grid', link5: '#', delay: '0.6s',
     },
     {
-        title: 'Our Stores', span1: 'New York', span2: 'London SF', span3: 'Edinburgh', span4: 'Los Angeles', span5: 'Las Vegas',
-        link1: '#', link2: '#', link3: '#', link4: '#', link5: '#', delay: '0.8s',
-    },
-    {
         title: 'Quick Links', span1: 'About Us', span2: 'Our Services', span3: 'Our Team', span4: 'Appointments', span5: 'Contact Us',
         link1: '/about-us', link2: '/services', link3: '/team', link4: '/appointment', link5: '/contact-us', delay: '1.0s',
     },
@@ -108,27 +105,27 @@ export const footerdata2 = [
 // pages 
 // testimonial 
 export const testidata = [
-    {treat:"Optimal Treatment", delay: '0.2s', title: 'Kenneth Fong', position: 'Patient', image: IMAGES.testimonial2 },
-    {treat:"Best Treatment", delay: '0.4s', title: 'Danial Frankie', position: 'Patient', image: IMAGES.testimonial3 },
-    {treat:"Recommended Care", delay: '0.6s', title: 'Rihana Roy', position: 'Patient', image: IMAGES.testimonial4 },
-    {treat:"First-Class Treatment", delay: '0.8s', title: 'Kenneth Fong', position: 'Patient', image: IMAGES.testimonial5 },
+    { treat: "Optimal Treatment", delay: '0.2s', title: 'Kenneth Fong', position: 'Patient', image: IMAGES.testimonial2 },
+    { treat: "Best Treatment", delay: '0.4s', title: 'Danial Frankie', position: 'Patient', image: IMAGES.testimonial3 },
+    { treat: "Recommended Care", delay: '0.6s', title: 'Rihana Roy', position: 'Patient', image: IMAGES.testimonial4 },
+    { treat: "First-Class Treatment", delay: '0.8s', title: 'Kenneth Fong', position: 'Patient', image: IMAGES.testimonial5 },
 ]
 export const testiswipeerdata2 = [
-    { image: IMAGES.testimonialsmall1 , name:"Danial Frankie"},
-    { image: IMAGES.testimonialsmall2 , name:"Esteban Serrano"},
-    { image: IMAGES.testimonialsmall3 , name:"Rihana Roy"},
+    { image: IMAGES.testimonialsmall1, name: "Danial Frankie" },
+    { image: IMAGES.testimonialsmall2, name: "Esteban Serrano" },
+    { image: IMAGES.testimonialsmall3, name: "Rihana Roy" },
 ]
 
 
 export interface BlogItem {
-  image: any;
-  dealy: string;
-  title: string;
+    image: any;
+    dealy: string;
+    title: string;
 }
 
 // bloggrid 
-export const blogdata : BlogItem[]= [
-    { image: IMAGES.blogoverlaylarge1, dealy: '0.1s', title: 'The Art of Managing Business and Patient Care.', }, 
+export const blogdata: BlogItem[] = [
+    { image: IMAGES.blogoverlaylarge1, dealy: '0.1s', title: 'The Art of Managing Business and Patient Care.', },
     { image: IMAGES.blogoverlaylarge2, dealy: '0.2s', title: 'Successful Transitional Rehab: More Than Just Exercise', },
     { image: IMAGES.blogoverlaylarge3, dealy: '0.3s', title: 'What is Respite Care and Why is it Important?', },
     { image: IMAGES.blogoverlaylarge4, dealy: '0.4s', title: 'The Art of Managing Business and Patient Care', },
@@ -136,7 +133,7 @@ export const blogdata : BlogItem[]= [
     { image: IMAGES.blogoverlaylarge6, dealy: '0.6s', title: 'How Transitional Rehabilitation Aids in Stroke Recovery', },
 ]
 export const blogdata2 = [
-    { image: IMAGES.bloggrid1, dealy: '0.1s', title: 'The Art of Managing Business and Patient Care.', }, 
+    { image: IMAGES.bloggrid1, dealy: '0.1s', title: 'The Art of Managing Business and Patient Care.', },
     { image: IMAGES.bloggrid2, dealy: '0.2s', title: 'Successful Transitional Rehab: More Than Just Exercise', },
     { image: IMAGES.bloggrid3, dealy: '0.3s', title: 'What is Respite Care and Why is it Important?', },
     { image: IMAGES.bloggrid4, dealy: '0.4s', title: 'The Art of Managing Business and Patient Care', },
@@ -156,15 +153,26 @@ export const servicedetails = [
 ]
 // teamdetail
 export const empolydata = [
-    { id: 1, delay: '0.2s', image: IMAGES.team1, title: "Nashid Martines", position: "Cardiac Surgery" },
-    { id: 2, delay: '0.4s', image: IMAGES.team2, title: "Emilio Duarte", position: "Pediatric Clinic" },
-    { id: 3, delay: '0.6s', image: IMAGES.team3, title: "Rihana Roy", position: "Gynecology" },
-    { id: 5, delay: '1.0s', image: IMAGES.team1, title: "Santiago Rivas", position: "Cardiac Surgery" },
-    { id: 6, delay: '1.2s', image: IMAGES.team2, title: "Danial Frankie", position: "Pediatric Clinic" },
-    { id: 4, delay: '0.8s', image: IMAGES.team4, title: "Esteban Serrano", position: "Neurology" },
-    { id: 7, delay: '1.4s', image: IMAGES.team3, title: "Roman Petrov", position: "Gynecology" },
-    { id: 8, delay: '1.6s', image: IMAGES.team4, title: "Kenneth Fong", position: "Neurology" },
-]
+    {
+        id: 1,
+        delay: "0.2s",
+        image: IMAGES.team1, // fallback image (optional)
+        videoUrl: "https://www.youtube.com/watch?v=W5Dm2WCk8jg",
+    },
+    {
+        id: 2,
+        delay: "0.4s",
+        image: IMAGES.team2,
+        videoUrl: "https://www.youtube.com/watch?v=W5Dm2WCk8jg",
+    },
+    {
+        id: 3,
+        delay: "0.6s",
+        image: IMAGES.team3,
+        videoUrl: "https://www.youtube.com/watch?v=W5Dm2WCk8jg",
+    },
+];
+
 // component 
 // alllocation
 export const locationdata = [
@@ -218,7 +226,7 @@ export const clientswiperdata2 = [
 // counter 
 export const countupdata = [
     { title: 'Specialists', delay: '0.4s', countup: 200, span: '+', },
-    { title: 'Happy Patients', delay: '0.6s', countup: 45,  span: 'K', },
+    { title: 'Happy Patients', delay: '0.6s', countup: 45, span: 'K', },
     { title: 'Winning Awards', delay: '0.8s', countup: 150, span: '+', },
 ]
 // frequently 
@@ -315,21 +323,112 @@ export const pricingdata2 = [
 ]
 // raelpatient 
 export const testiswipeerdata = [
-    { image: IMAGES.testimonial1 , name:"Tariq Najeeb"},
-    { image: IMAGES.testimonial2 , name:"Nasir Qadiri"},
-    { image: IMAGES.testimonial3 , name:"Faisal Darwish"},
+    { image: IMAGES.testimonial1, name: "Tariq Najeeb" },
+    { image: IMAGES.testimonial2, name: "Nasir Qadiri" },
+    { image: IMAGES.testimonial3, name: "Faisal Darwish" },
 ]
 // servicebox
-export const serviceboxdata = [    
-    { id: 1, delay: '0.1s', title: 'Angioplasty', svg1: SVGICONS.iconcell1, svg2: SVGICONS.iconbg1, },
-    { id: 2, delay: '0.2s', title: 'Cardiology', svg1: SVGICONS.iconcell2, svg2: SVGICONS.iconbg2, },
-    { id: 3, delay: '0.3s', title: 'Dental', svg1: SVGICONS.iconcell3, svg2: SVGICONS.iconbg3, },
-    { id: 4, delay: '0.4s', title: 'Endocrinology', svg1: SVGICONS.iconcell4, svg2: SVGICONS.iconbg4, },
-    { id: 5, delay: '0.5s', title: 'Eye Care', svg1: SVGICONS.iconcell5, svg2: SVGICONS.iconbg5, },
-    { id: 6, delay: '0.6s', title: 'Neurology', svg1: SVGICONS.iconcell6, svg2: SVGICONS.iconbg6, },
-    { id: 7, delay: '0.7s', title: 'Orthopedics', svg1: SVGICONS.iconcell7, svg2: SVGICONS.iconbg7, },
-    { id: 8, delay: '0.8s', title: 'RMI', svg1: SVGICONS.iconcell8, svg2: SVGICONS.iconbg8, },
-]
+// servicebox
+export const serviceboxdata = [
+    {
+        id: 1,
+        delay: "0.1s",
+        title: "Transplant",
+        sub: [
+            { label: "Hair Transplant", to: "/service-detail?type=hair-transplant" },
+            { label: "Beard Transplant", to: "/service-detail?type=beard-transplant" },
+            { label: "Eyebrow Transplant", to: "/service-detail?type=eyebrow-transplant" },
+        ],
+        svg1: SVGICONS.iconcell1,
+        svg2: SVGICONS.iconbg1,
+    },
+    {
+        id: 2,
+        delay: "0.2s",
+        title: "Skin",
+        sub: [
+            { label: "Wrinkle Removal", to: "/service-detail?type=wrinkle" },
+            { label: "Acne / Pimples", to: "/service-detail?type=acne" },
+            { label: "Scar Removal", to: "/service-detail?type=scar" },
+        ],
+        svg1: SVGICONS.iconcell2,
+        svg2: SVGICONS.iconbg2,
+    },
+    {
+        id: 3,
+        delay: "0.3s",
+        title: "Laser",
+        sub: [
+            { label: "Laser Hair Removal", to: "/service-detail?type=laser-hair" },
+            { label: "Tattoo Removal", to: "/service-detail?type=tattoo" },
+            { label: "Skin Tightening", to: "/service-detail?type=tightening" },
+        ],
+        svg1: SVGICONS.iconcell3,
+        svg2: SVGICONS.iconbg3,
+    },
+    {
+        id: 4,
+        delay: "0.4s",
+        title: "Dental",
+        sub: [
+            { label: "Teeth Whitening", to: "/service-detail?type=whitening" },
+            { label: "Braces / Aligners", to: "/service-detail?type=braces" },
+            { label: "Dental Implants", to: "/service-detail?type=implants" },
+        ],
+        svg1: SVGICONS.iconcell4,
+        svg2: SVGICONS.iconbg4,
+    },
+    {
+        id: 5,
+        delay: "0.5s",
+        title: "Body",
+        sub: [
+            { label: "Weight Loss", to: "/service-detail?type=weight-loss" },
+            { label: "Fat Reduction", to: "/service-detail?type=fat-reduction" },
+            { label: "Body Contouring", to: "/service-detail?type=contouring" },
+        ],
+        svg1: SVGICONS.iconcell5,
+        svg2: SVGICONS.iconbg5,
+    },
+    {
+        id: 6,
+        delay: "0.6s",
+        title: "Face",
+        sub: [
+            { label: "Fillers", to: "/service-detail?type=fillers" },
+            { label: "Botox", to: "/service-detail?type=botox" },
+            { label: "Glow Treatment", to: "/service-detail?type=glow" },
+        ],
+        svg1: SVGICONS.iconcell6,
+        svg2: SVGICONS.iconbg6,
+    },
+    {
+        id: 7,
+        delay: "0.7s",
+        title: "Women Care",
+        sub: [
+            { label: "PRP Therapy", to: "/service-detail?type=prp" },
+            { label: "Skin Rejuvenation", to: "/service-detail?type=rejuvenation" },
+            { label: "Laser Therapy", to: "/service-detail?type=women-laser" },
+        ],
+        svg1: SVGICONS.iconcell7,
+        svg2: SVGICONS.iconbg7,
+    },
+    {
+        id: 8,
+        delay: "0.8s",
+        title: "Men Care",
+        sub: [
+            { label: "Hair Fall Treatment", to: "/service-detail?type=hair-fall" },
+            { label: "Beard Growth", to: "/service-detail?type=beard-growth" },
+            { label: "Skin Cleaning", to: "/service-detail?type=skin-clean" },
+        ],
+        svg1: SVGICONS.iconcell8,
+        svg2: SVGICONS.iconbg8,
+    },
+];
+
+
 // sidebar 
 export const tagdata = [
     { title: 'Acupressure', num: '(10)', },
@@ -342,9 +441,9 @@ export const tagdata = [
     { title: 'Walking', num: '(06)', },
 ]
 export const sidebarpostdata = [
-    { date:"10 June 2025", image: IMAGES.blogsmall1, title:"The Art of Managing Business and Patient Care"},
-    { date:"13 June 2025", image: IMAGES.blogsmall2, title:"The New Face of Care Blending Empathy with Expertise"},
-    { date:"17 June 2025", image: IMAGES.blogsmall3, title:"Here Care Expertise Elevating the Patient Experience"},
+    { date: "10 June 2025", image: IMAGES.blogsmall1, title: "The Art of Managing Business and Patient Care" },
+    { date: "13 June 2025", image: IMAGES.blogsmall2, title: "The New Face of Care Blending Empathy with Expertise" },
+    { date: "17 June 2025", image: IMAGES.blogsmall3, title: "Here Care Expertise Elevating the Patient Experience" },
 ]
 // whychoose 
 export const whychoosedata = [
@@ -367,3 +466,42 @@ export const worldclasslistdata = [
     { title: 'Health Information Technology', },
 ]
 
+
+export const gallerydata = [
+    {
+        id: 1,
+        image: IMAGES.bloggrid1,
+        title: 'Project 1',
+        category: 'Cardiology'
+    },
+    {
+        id: 2,
+        image: IMAGES.bloggrid2,
+        title: 'Project 2',
+        category: 'Dental'
+    },
+    {
+        id: 3,
+        image: IMAGES.bloggrid3,
+        title: 'Project 3',
+        category: 'Neurology'
+    },
+    {
+        id: 4,
+        image: IMAGES.bloggrid4,
+        title: 'Project 4',
+        category: 'Surgery'
+    },
+    {
+        id: 5,
+        image: IMAGES.bloggrid5,
+        title: 'Project 5',
+        category: 'Medical'
+    },
+    {
+        id: 6,
+        image: IMAGES.bloggrid6,
+        title: 'Project 6',
+        category: 'Orthopedics'
+    },
+]

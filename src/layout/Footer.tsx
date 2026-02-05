@@ -24,89 +24,46 @@ function Footer() {
     return (
         <>
             <footer className="site-footer style-1 overlay-primary-light" style={{ backgroundImage: `url(${IMAGES.bg4.src})` }} >
-                <div className="footer-head">
-                    <div className="container">
-                        <div className="fh-inner">
-                            <div className="row g-3 align-items-center">
-                                <div className="col-xl-3 col-md-12 col-sm-6 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">
-                                    <h3 className="title">Get in Touch with us</h3>
-                                    <p className="text">Lorem Ipsum is simply dummy</p>
-                                </div>
-                                {footerdata1.map((data, i) => (
-                                    <div className="col-xl-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay={data.delay} data-wow-duration="0.8s" key={i}>
-                                        <div className="icon-bx-wraper style-1">
-                                            <div className="icon-bx bg-secondary">
-                                                <span className="icon-cell">
-                                                    {data.icon}
-                                                </span>
-                                            </div>
-                                            <div className="icon-content">
-                                                <h5 className="dz-title">{data.title}</h5>
-                                                <p>{data.paragraph}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            
                 <div className="footer-top">
                     <div className="container">
-                        <div className="row">
-                            <div className="col-xl-3 col-sm-12 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">
-                                <div className="widget widget_about me-2">
-                                    <div className="footer-logo logo-white">
-                                        <Link href="/"><Image src={IMAGES.logo} alt="" /></Link>
-                                    </div>
-                                    <p><span className="text-primary">ClinicMaster</span> Ipsum Dolor Sit Amet, Consectetuer Adipiscing Elit, Sed Diam Nonummy Nibh Euismod Tincidunt Ut Laoreet Dolore Agna Aliquam Erat . Wisi Enim Ad Minim Veniam, Quis Tation. Sit Amet, Consec Tetuer. Ipsum Dolor</p>
-                                </div>
-                            </div>
-                            {footerdata2.map((data, i) => (
-                                <div className="col-xl-2 col-md-3 col-6 wow fadeInUp" data-wow-delay={data.delay} data-wow-duration="0.8s" key={i}>
-                                    <div className="widget widget_services">
-                                        <h2 className="footer-title">{data.title} </h2>
-                                        <ul className="list-hover1">
-                                            <li><Link href={data.link1}><span>{data.span1}</span></Link></li>
-                                            <li><Link href={data.link2}><span>{data.span2}</span></Link></li>
-                                            <li><Link href={data.link3}><span>{data.span3}</span></Link></li>
-                                            <li><Link href={data.link4}><span>{data.span4}</span></Link></li>
-                                            <li><Link href={data.link5}><span>{data.span5}</span></Link></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-                <div className="footer-middle">
-                    <div className="container">
-                        <div className="fm-inner">
-                            <div className="row align-items-center g-lg-5 g-4">
-                                <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">
-                                    <h2 className="title">Important Updates Waiting for you</h2>
-                                    <p>Get our latest and best contents right into your inbox</p>
-                                </div>
-                                <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.8s">
-                                    <form className="dzSubscribe style-1" ref={form} onSubmit={handleSubmit}>
-                                        <div className="dzSubscribeMsg"></div>
-                                        <div className="form-group">
-                                            <div className="input-group mb-0">
-                                                <input name="dzEmail" required type="email" className="form-control" placeholder="Your Email Address" />
-                                                <div className="input-group-addon">
-                                                    <button name="submit" value="Submit" type="submit" className="btn btn-primary btn-hover1">
-                                                        <span className="btn-text">Subscribe Now</span>
-                                                        <span className="btn-icon">
-                                                            <i className="fa-solid fa-paper-plane" />
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+               <div className="row">
+  {/* Logo column */}
+  <div className="col-xl-3 col-md-6 col-sm-12 wow fadeInUp">
+    <div className="widget widget_about me-2">
+      <div className="footer-logo logo-white">
+        <Link href="/">
+          <Image src={IMAGES.logo} alt="" />
+        </Link>
+      </div>
+      <p>
+        <span className="text-primary">ClinicMaster</span> Ipsum Dolor Sit Amet,
+        Consectetuer Adipiscing Elit, Sed Diam Nonummy...
+      </p>
+    </div>
+  </div>
+
+  {/* Footer links */}
+  {footerdata2.map((data, i) => (
+    <div
+      className="col-xl-3 col-md-3 col-6 wow fadeInUp"
+      data-wow-delay={data.delay}
+      key={i}
+    >
+      <div className="widget widget_services">
+        <h2 className="footer-title">{data.title}</h2>
+        <ul className="list-hover1">
+          <li><Link href={data.link1}>{data.span1}</Link></li>
+          <li><Link href={data.link2}>{data.span2}</Link></li>
+          <li><Link href={data.link3}>{data.span3}</Link></li>
+          <li><Link href={data.link4}>{data.span4}</Link></li>
+          <li><Link href={data.link5}>{data.span5}</Link></li>
+        </ul>
+      </div>
+    </div>
+  ))}
+</div>
+
                     </div>
                 </div>
                 <div className="footer-bottom">
