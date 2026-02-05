@@ -152,26 +152,44 @@ export const servicedetails = [
     { title: 'RMI', },
 ]
 // teamdetail
+// teamdetail (TEAM PAGE DATA)
 export const empolydata = [
-    {
-        id: 1,
-        delay: "0.2s",
-        image: IMAGES.team1, // fallback image (optional)
-        videoUrl: "https://www.youtube.com/watch?v=W5Dm2WCk8jg",
-    },
-    {
-        id: 2,
-        delay: "0.4s",
-        image: IMAGES.team2,
-        videoUrl: "https://www.youtube.com/watch?v=W5Dm2WCk8jg",
-    },
-    {
-        id: 3,
-        delay: "0.6s",
-        image: IMAGES.team3,
-        videoUrl: "https://www.youtube.com/watch?v=W5Dm2WCk8jg",
-    },
+  { id: 1, delay: "0.2s", image: IMAGES.team1, title: "Nashid Martines", position: "Cardiac Surgery" },
+  { id: 2, delay: "0.4s", image: IMAGES.team2, title: "Emilio Duarte", position: "Pediatric Clinic" },
+  { id: 3, delay: "0.6s", image: IMAGES.team3, title: "Rihana Roy", position: "Gynecology" },
+  { id: 4, delay: "0.8s", image: IMAGES.team4, title: "Esteban Serrano", position: "Neurology" },
+  { id: 5, delay: "1.0s", image: IMAGES.team1, title: "Santiago Rivas", position: "Cardiac Surgery" },
+  { id: 6, delay: "1.2s", image: IMAGES.team2, title: "Danial Frankie", position: "Pediatric Clinic" },
+  { id: 7, delay: "1.4s", image: IMAGES.team3, title: "Roman Petrov", position: "Gynecology" },
+  { id: 8, delay: "1.6s", image: IMAGES.team4, title: "Kenneth Fong", position: "Neurology" },
 ];
+
+
+
+
+
+// videos (ONLY FOR SurgeryBlog / Video section)
+export const teamVideos = [
+  {
+    id: 1,
+    delay: "0.2s",
+    image: IMAGES.team1, // fallback
+    videoUrl: "https://www.youtube.com/watch?v=W5Dm2WCk8jg",
+  },
+  {
+    id: 2,
+    delay: "0.4s",
+    image: IMAGES.team2,
+    videoUrl: "https://www.youtube.com/watch?v=W5Dm2WCk8jg",
+  },
+  {
+    id: 3,
+    delay: "0.6s",
+    image: IMAGES.team3,
+    videoUrl: "https://www.youtube.com/watch?v=W5Dm2WCk8jg",
+  },
+];
+
 
 // component 
 // alllocation

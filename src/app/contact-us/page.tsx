@@ -22,7 +22,7 @@ function Contactus() {
                         </div>
                     </div>
                 </section>
-                <Alllocation />
+             
                 <div className="clearfix">
                     <div className="map-wrapper style-2">
                         <iframe 

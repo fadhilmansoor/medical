@@ -1,7 +1,7 @@
 "use client";
 
 import { Modal } from "react-bootstrap";
-import { empolydata } from "@/constant/alldata";
+import { teamVideos } from "@/constant/alldata";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -10,6 +10,7 @@ function getYoutubeId(url: string) {
     const u = new URL(url);
 
     if (u.hostname.includes("youtu.be")) return u.pathname.replace("/", "");
+
     const v = u.searchParams.get("v");
     if (v) return v;
 
@@ -23,9 +24,13 @@ function getYoutubeId(url: string) {
   }
 }
 
-function getYoutubeThumb(url: string) {
+// maxres sometimes not available -> fallback handled in component
+function getYoutubeThumb(url: string, quality: "maxres" | "hq" = "maxres") {
   const id = getYoutubeId(url);
-  return `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+  if (!id) return "";
+  return quality === "maxres"
+    ? `https://img.youtube.com/vi/${id}/maxresdefault.jpg`
+    : `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
 }
 
 const SurgeryBlog = () => {
@@ -47,16 +52,22 @@ const SurgeryBlog = () => {
   return (
     <>
       <div className="row">
-        {empolydata.map((item, i) => (
-          <div className="col-xxl-4 col-sm-6" key={i}>
+        {teamVideos.map((item, i) => (
+          <div className="col-xxl-4 col-sm-6" key={item.id ?? i}>
             <div className="dz-team style-1 box-hover">
               <div className="dz-media">
                 <Image
-                  src={getYoutubeThumb(item.videoUrl)}
+                  src={getYoutubeThumb(item.videoUrl, "maxres") || item.image}
                   alt="Video"
                   width={900}
                   height={600}
                   style={{ width: "100%", height: "auto" }}
+                  onError={(e) => {
+                    // fallback to HQ thumbnail if maxres fails
+                    const fallback = getYoutubeThumb(item.videoUrl, "hq");
+                    if (!fallback) return;
+                    (e.currentTarget as any).src = fallback;
+                  }}
                 />
 
                 <button
@@ -77,7 +88,6 @@ const SurgeryBlog = () => {
         ))}
       </div>
 
-      {/* ✅ Modal */}
       <Modal show={show} onHide={closeVideo} centered size="lg">
         <Modal.Body style={{ padding: 0 }}>
           {activeVideoId && (
