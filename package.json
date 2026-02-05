@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@google/genai": "^1.40.0",
     "gray-matter": "^4.0.3",
     "lightgallery": "^2.8.3",
+    "lucide-react": "^0.563.0",
     "next": "^16.1.6",
     "nodemailer": "^8.0.0",
     "react": "^19.2.4",

@@ -14,7 +14,6 @@ import RealPatient from "@/component/RealPatient";
 import Howitwork from "@/component/Howitwork";
 import MeetDr from "@/component/MeetDr";
 import Frequently from "@/component/Frequently";
-
 import StayInformed from "@/component/StayInformed";
 import MapWraper from "@/component/MapWraper";
 import SliderBanner from "./silderbanner"; // Import SliderBanner

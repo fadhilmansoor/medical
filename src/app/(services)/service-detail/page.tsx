@@ -7,6 +7,7 @@ import { servicedetails, worldclasslistdata } from "@/constant/alldata";
 import Image from "next/image";
 import AccordionBlog from "./_components/AccordionBlog";
 import SurgeryBlog from "./_components/SurgeryBlog";
+import HairTransplantPage from "@/app/ai/service/sevicehair";
 
 function ServiceDetail() {
     return (
@@ -18,9 +19,17 @@ function ServiceDetail() {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-8 single-inner order-lg-1">
-                                <div className="single-media dz-media single-media height-sm radius-lg wow fadeInUp" data-wow-delay="0.1s" data-wow-duration="0.7s">
-                                    <Image src={IMAGES.bloggrid2} alt="" className="object-fit-cover" />
-                                </div>
+                       <div
+  className="single-media dz-media height-sm radius-lg wow fadeInUp d-flex align-items-center justify-content-center"
+  data-wow-delay="0.1s"
+  data-wow-duration="0.7s"
+>
+  {/* ✅ CHANGE #2: Parent controls width 700 and responsive */}
+  <div style={{ width: "700px", maxWidth: "100%" }}>
+    <HairTransplantPage />
+  </div>
+</div>
+
                                 <div className="content-item wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.7s">
                                     <h2>Angioplasty</h2>
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>

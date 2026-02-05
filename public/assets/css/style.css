@@ -52929,9 +52929,6 @@ footer.site-footer.footer-dark .fb-inner {
 
 
 
-
-
-
 /* Slider Container */
 .slider-banner-container {
   position: absolute;
@@ -52939,10 +52936,7 @@ footer.site-footer.footer-dark .fb-inner {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  height: 500px;
-  /* Adjust the height of the container */
   overflow: hidden;
-  /* Hide images that are out of the container */
 }
 
 /* Slider Wrapper */
@@ -52952,35 +52946,32 @@ footer.site-footer.footer-dark .fb-inner {
   transition: transform 0.5s ease-in-out;
 }
 
-/* Slider Content */
-.slider-banner-content {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-/* Individual Image Styling */
+/* Individual Slide */
 .slider-banner-image {
   flex-shrink: 0;
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  /* Ensures button can be positioned over the image */
 }
 
-/* Image Styling */
-.slider-banner-img {
+/* ✅ One shared frame => same size for photo + video thumbnail */
+.media-frame {
+  position: relative;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 12 / 9; /* same as 1200x500 (photo ratio) */
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Image/Thumbnail Styling */
+.slider-banner-img {
   object-fit: cover;
-  /* Ensure images are properly cropped */
   border-radius: 15px;
 }
 
-/* Navigation Arrows - Positioned at the Bottom */
+/* Navigation Arrows */
 .nav-button {
   position: absolute;
   bottom: 20px;
@@ -53001,25 +52992,18 @@ footer.site-footer.footer-dark .fb-inner {
 
 .prev {
   left: 20px;
-  /* Position left arrow */
 }
 
 .next {
   right: 45px;
-  /* Position right arrow */
 }
 
-/* Main Container */
-/* .slider-banner-container {} - Removed to restore original layout/stacking */
-
-/* Video Play Button Styling */
+/* Video Play Overlay */
 .video-bx1 {
   position: absolute;
-  /* Position it on top of the image */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* Center the button */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53032,22 +53016,20 @@ footer.site-footer.footer-dark .fb-inner {
   pointer-events: none;
 }
 
-.hero-thumbnail .circle-wrapper>* {
+.hero-thumbnail .circle-wrapper > * {
   pointer-events: auto;
-  /* Allow clicks on children like icons if needed */
 }
 
+/* Play Button */
 .video-btn {
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
   padding: 20px;
   border-radius: 50%;
   font-size: 36px;
-  /* Increased size */
   cursor: pointer;
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  /* Added shadow */
 }
 
 .video-btn:hover {
@@ -53061,7 +53043,7 @@ footer.site-footer.footer-dark .fb-inner {
   font-size: 18px;
 }
 
-/* Close Video Button */
+/* Close Video Button (optional if you use it elsewhere) */
 .close-video {
   position: absolute;
   top: 10px;
@@ -53077,4 +53059,291 @@ footer.site-footer.footer-dark .fb-inner {
 
 .close-video:hover {
   background-color: rgba(0, 0, 0, 0.9);
+}
+
+
+
+
+/* service hai transplant */
+/* Outer wrapper */
+.ht-wrap {
+  width: 100%;
+}
+
+/* 700x500 fixed box (responsive down) */
+.ht-box {
+  width: 700px;
+  max-width: 100%;
+  height: 500px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Top bar */
+.ht-topbar {
+  height: 48px;
+  padding: 0 12px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ht-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.ht-dim {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6b7280;
+  margin-left: 6px;
+}
+
+/* Tabs */
+.ht-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.ht-tab {
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #374151;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.ht-tab:hover {
+  border-color: #9ca3af;
+}
+
+.ht-tab.is-active {
+  background: #111827;
+  color: #fff;
+  border-color: #111827;
+}
+
+/* Body */
+.ht-body {
+  height: calc(500px - 48px);
+  padding: 12px;
+}
+
+/* Upload area */
+.ht-upload {
+  height: 100%;
+  width: 100%;
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.ht-upload:hover {
+  border-color: #6b7280;
+}
+
+.ht-icon {
+  width: 32px;
+  height: 32px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.ht-upload-text {
+  font-size: 13px;
+  color: #374151;
+}
+
+.ht-upload-sub {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+/* Preview grid */
+.ht-grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .ht-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Panels */
+.ht-panel {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.ht-imagePanel {
+  height: 100%;
+}
+
+.ht-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Controls panel */
+.ht-controls {
+  padding: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ht-meta {
+  font-size: 12px;
+  color: #374151;
+}
+
+.ht-note {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 6px;
+}
+
+/* Buttons */
+.ht-actions {
+  display: grid;
+  gap: 8px;
+}
+
+.ht-btn {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ht-btnIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.ht-btnPrimary {
+  background: #111827;
+  color: #fff;
+}
+
+.ht-btnPrimary:hover {
+  background: #0b1220;
+}
+
+.ht-btnPrimary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ht-btnOutline {
+  background: #fff;
+  color: #111827;
+  border-color: #d1d5db;
+}
+
+.ht-btnOutline:hover {
+  border-color: #9ca3af;
+}
+
+/* Result UI */
+.ht-resultWrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ht-resultGrid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.ht-resultCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.ht-cardHead {
+  padding: 6px 10px;
+  font-size: 11px;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fafafa;
+}
+
+.ht-cardImg {
+  height: calc(100% - 28px);
+}
+
+/* Result footer */
+.ht-resultFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Error & footnote */
+.ht-error {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #dc2626;
+  text-align: center;
+}
+
+.ht-footnote {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* toogle header */
+/* Force white background for offcanvas */
+.dz-offcanvas.offcanvas {
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Make sure body inside is also white */
+.dz-offcanvas .offcanvas-body {
+  background-color: #ffffff;
+}
+
+/* Optional: remove any overlay tint inside panel */
+.dz-offcanvas::before,
+.dz-offcanvas::after {
+  display: none !important;
 }
