@@ -151,6 +151,49 @@ export const servicedetails = [
     { title: 'Orthopedics', },
     { title: 'RMI', },
 ]
+// serviceCategoryMap (AI logic)
+export const serviceCategoryMap = [
+  {
+    title: "Hair",
+    category: "hair",
+    prompt:
+      "add short, natural-looking scalp hair while keeping the face, skin tone, and background unchanged.",
+  },
+  {
+    title: "Beard",
+    category: "beard",
+    prompt:
+      "add a natural-looking beard or light stubble while keeping facial shape and skin tone realistic.",
+  },
+  {
+    title: "Skin",
+    category: "skin",
+    prompt:
+      "smooth facial skin by reducing wrinkles and fine lines while keeping a natural appearance.",
+  },
+  {
+    title: "Teeth",
+    category: "teeth",
+    prompt:
+      "make the teeth look cleaner, whiter, and slightly more aligned while staying natural.",
+  },
+  {
+    title: "Eyes",
+    category: "eyes",
+    prompt:
+      "reduce dark circles and tiredness around the eyes while keeping them natural and realistic.",
+  },
+];
+
+
+export const aiServicedetails = [
+  { columnstand: "active", title: "Hair" },
+  { title: "Beard" },
+  { title: "Skin" },
+  { title: "Teeth" },
+  { title: "Eyes" },
+];
+
 // teamdetail
 // teamdetail (TEAM PAGE DATA)
 export const empolydata = [

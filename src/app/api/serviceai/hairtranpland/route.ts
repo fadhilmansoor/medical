@@ -2,15 +2,20 @@ import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 
 const apiKey = process.env.GEMINI_API_KEY;
-if (!apiKey) throw new Error("GEMINI_API_KEY missing");
-
-const ai = new GoogleGenAI({ apiKey });
 const MODEL = "gemini-2.0-flash-exp-image-generation";
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
+    if (!apiKey) {
+      return NextResponse.json(
+        { success: false, error: "GEMINI_API_KEY missing" },
+        { status: 500 }
+      );
+    }
 
+    const ai = new GoogleGenAI({ apiKey });
+
+    const body = await req.json();
     const prompt = body?.prompt;
     const image = body?.image;
 
@@ -21,15 +26,23 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // minimal image validation (FAST)
-    if (typeof image !== "string" || !image.startsWith("data:")) {
+    if (typeof image !== "string" || !image.startsWith("data:image/")) {
       return NextResponse.json(
         { success: false, error: "Invalid image format" },
         { status: 400 }
       );
     }
 
-    const base64 = image.split(",")[1];
+    const match = image.match(/^data:(image\/[a-zA-Z0-9.+-]+);base64,/);
+    if (!match) {
+      return NextResponse.json(
+        { success: false, error: "Invalid image data URL" },
+        { status: 400 }
+      );
+    }
+
+    const mimeType = match[1];
+    const base64 = image.replace(/^data:image\/[a-zA-Z0-9.+-]+;base64,/, "");
     if (!base64) {
       return NextResponse.json(
         { success: false, error: "Invalid image data" },
@@ -37,27 +50,39 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 🔥 FAST Gemini call
+    const MAX_BASE64 = 7_000_000;
+    if (base64.length > MAX_BASE64) {
+      return NextResponse.json(
+        { success: false, error: "Image too large. Upload a smaller photo." },
+        { status: 413 }
+      );
+    }
+
+    const finalPrompt = `
+You are an image editor. Keep the same person and photo composition.
+Only apply this change: ${prompt}
+Do not change background, identity, face structure, lighting, or age.
+Return a single edited image.
+`;
+
     const result = await ai.models.generateContent({
       model: MODEL,
       contents: [
         {
           role: "user",
           parts: [
-            { text: prompt },
+            { text: finalPrompt },
             {
               inlineData: {
                 data: base64,
-                mimeType: image.includes("png")
-                  ? "image/png"
-                  : "image/jpeg",
+                mimeType,
               },
             },
           ],
         },
       ],
       config: {
-        temperature: 0.6, // ⬅ faster & more stable
+        temperature: 0.4,
         topK: 20,
         topP: 0.9,
         responseModalities: ["Text", "Image"],
@@ -74,10 +99,10 @@ export async function POST(req: NextRequest) {
 
     for (const p of parts) {
       if ("inlineData" in p && p.inlineData?.data) {
-        const mime = p.inlineData.mimeType || "image/png";
+        const outMime = p.inlineData.mimeType || "image/png";
         return NextResponse.json({
           success: true,
-          image: `data:${mime};base64,${p.inlineData.data}`,
+          image: `data:${outMime};base64,${p.inlineData.data}`,
         });
       }
     }

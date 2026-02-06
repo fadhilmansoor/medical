@@ -53347,3 +53347,70 @@ footer.site-footer.footer-dark .fb-inner {
 .dz-offcanvas::after {
   display: none !important;
 }
+
+
+
+
+/* AI SERVICES MENU */
+/* Add this in your CSS (global or module) */
+.ai-service-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ai-service-item + .ai-service-item {
+  margin-top: 8px;
+}
+
+.ai-service-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  padding: 12px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+
+  text-align: left;
+  cursor: pointer;
+
+  transition: transform 120ms ease, background 120ms ease, border 120ms ease;
+}
+
+.ai-service-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.ai-service-item.is-active .ai-service-btn {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.ai-service-icon {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  flex: 0 0 28px;
+}
+
+.ai-service-text {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.ai-service-arrow {
+  margin-left: auto;
+  opacity: 0.75;
+  font-size: 18px;
+}
