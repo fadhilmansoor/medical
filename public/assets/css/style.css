@@ -23666,13 +23666,10 @@ button {
 }
 
 .icon-bx-wraper.style-3 p {
-  font-size: 15px;
-  font-weight: 300;
-  -webkit-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  transition: all 0.5s;
+    font-size: 15px;
+    font-weight: 300;
+    transition: all 0.5s;
 }
-
 .icon-bx-wraper.style-3 .dz-title {
   font-size: 20px;
   font-weight: 700;
@@ -54213,3 +54210,10 @@ footer.site-footer.footer-dark .fb-inner {
 .font-appointment .form-title {
   font-weight: 600;
 }
+
+
+
+
+.service-box-container * {
+          font-family: 'Poppins', sans-serif;
+        }

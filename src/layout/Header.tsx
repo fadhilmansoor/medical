@@ -213,44 +213,22 @@ function Header() {
                 </div>
               </div>
 
-              <div className={`extra-nav ${scroll ? "active" : ""}`}>
-                <div className="extra-cell">
-                  {/* WhatsApp + Appointment + Offcanvas */}
-                  <ul className="header-right header-right-actions">
-                    <li className="nav-item">
-                      <a
-                        href="https://wa.me/11234567890?text=Hi%20I%20want%20to%20book%20an%20appointment"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="icon-only-btn whatsapp-btn"
-                        aria-label="WhatsApp"
-                      >
-                        <i className="fa-brands fa-whatsapp" />
-                      </a>
-                    </li>
-
-                    <li className="nav-item">
-                      <Link href="/appointment" className="btn btn-primary btn-hover1 btn-appointment" onClick={closeAllMenus}>
-                        Appointment
-                      </Link>
-                    </li>
-
-                    <li className="nav-item">
-                      <button
-                        onClick={() => handleclick(1)}
-                        type="button"
-                        className="toggle-nav-btn"
-                        aria-controls="headerSidebar"
-                        aria-expanded={isOffcanvasOpen}
-                      >
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+                 <div className={`extra-nav ${scroll ? 'active' : ''}`}>
+                                <div className="extra-cell">
+                                    <ul className="header-right">
+                                        <li className="nav-item">
+                                            <Link href="/appointment" className="btn btn-primary btn-hover1"> Appointment </Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <button onClick={() => handleclick(1)} type="button" className="toggle-nav-btn" data-bs-toggle="offcanvas" data-bs-target="#headerSidebar" aria-controls="offcanvasLeft">
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
             </div>
           </div>
         </div>

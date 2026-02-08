@@ -2,12 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import {
-  Scale,
-  Scissors,
-  Sparkles,
-  Waves,
-} from "lucide-react";
+import { Scale, Scissors, Sparkles, Waves } from "lucide-react";
 
 const serviceboxdata = [
   {
@@ -40,13 +35,13 @@ const serviceboxdata = [
   },
 ];
 
-
 function ServiceBox() {
   const [active, setActive] = useState(1);
 
   return (
     <>
-      <div className="row">
+      
+      <div className="row service-box-container">
         {serviceboxdata.map((data, i) => {
           const Icon = data.Icon;
 
@@ -66,24 +61,23 @@ function ServiceBox() {
                 {/* ================= HEADER ================= */}
                 <div className="icon-bx-head">
                   <div className="icon-content">
-                    {/* Logo LEFT + Title RIGHT */}
                     <div className="d-flex align-items-center gap-3">
-                      {/* Logo */}
                       <div className="icon-bx">
                         <span className="icon-cell">
                           <Icon size={36} strokeWidth={2.5} />
                         </span>
                       </div>
 
-                      {/* Title */}
-                      <h3 className="dz-title mb-0">{data.title}</h3>
+                      <h3 className="dz-title mb-0" style={{ fontWeight: 600 }}>
+                        {data.title}
+                      </h3>
                     </div>
 
-                    {/* 20 word description */}
-                    <p className="mt-2 text-muted">{data.description}</p>
+                    <p className="mt-2 text-muted" style={{ fontWeight: 300 }}>
+                      {data.description}
+                    </p>
                   </div>
 
-                  {/* Background watermark icon */}
                   <span className="icon-bg">
                     <Icon size={120} strokeWidth={2} />
                   </span>
@@ -91,10 +85,6 @@ function ServiceBox() {
 
                 {/* ================= FOOTER ================= */}
                 <div className="icon-bx-footer">
-                  <span className="text-badge">
-                    <i className="fa fa-circle text-primary" /> 25+ Doctors
-                  </span>
-
                   <Link
                     href="/service-detail"
                     className="btn btn-square btn-primary rounded-circle"
@@ -107,8 +97,6 @@ function ServiceBox() {
           );
         })}
       </div>
-
-   
     </>
   );
 }
