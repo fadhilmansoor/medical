@@ -1,10 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { Modal } from "react-bootstrap";
 
-// Sample slides with video URLs
 const slides: Array<{ video?: string; src?: string }> = [
   { video: "https://www.youtube.com/watch?v=YcxiUn7k0Ks" },
   {
@@ -15,28 +14,39 @@ const slides: Array<{ video?: string; src?: string }> = [
   },
 ];
 
-// Extract YouTube video ID from URL (supports watch?v=, youtu.be/, embed/)
+// Extract YouTube ID
 const getYoutubeId = (url: string) => {
   const watch = url.match(/[?&]v=([^&]+)/);
   if (watch?.[1]) return watch[1];
-
   const short = url.match(/youtu\.be\/([^?&]+)/);
   if (short?.[1]) return short[1];
-
   const embed = url.match(/youtube\.com\/embed\/([^?&]+)/);
   if (embed?.[1]) return embed[1];
-
   return "";
 };
 
-// Reliable YouTube thumbnail (hqdefault exists more often than maxresdefault)
 const getYoutubeThumb = (url: string) => {
   const id = getYoutubeId(url);
   return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
 };
 
-const SliderBanner = () => {
-  const [activeSlide, setActiveSlide] = useState(0);
+export default function SliderBanner() {
+  // ✅ Build infinite track: [lastClone, ...slides, firstClone]
+  const track = useMemo(() => {
+    if (slides.length === 0) return [];
+    const first = slides[0];
+    const last = slides[slides.length - 1];
+    return [last, ...slides, first];
+  }, []);
+
+  // ✅ Start from 1 (the real first slide)
+  const [index, setIndex] = useState(1);
+
+  // ✅ Transition control (to remove snap on jump)
+  const [withTransition, setWithTransition] = useState(true);
+
+  // lock clicks while animating
+  const animatingRef = useRef(false);
 
   // ✅ Modal state
   const [show, setShow] = useState(false);
@@ -44,7 +54,7 @@ const SliderBanner = () => {
 
   const handleClose = () => {
     setShow(false);
-    setActiveVideoUrl(null); // ✅ stops video
+    setActiveVideoUrl(null);
   };
 
   const openVideoModal = (videoUrl: string) => {
@@ -52,25 +62,66 @@ const SliderBanner = () => {
     setShow(true);
   };
 
-  const clickNext = () =>
-    setActiveSlide((p) => (p === slides.length - 1 ? 0 : p + 1));
-  const clickPrev = () =>
-    setActiveSlide((p) => (p === 0 ? slides.length - 1 : p - 1));
-
   const activeVideoId = useMemo(() => {
     return activeVideoUrl ? getYoutubeId(activeVideoUrl) : "";
   }, [activeVideoUrl]);
+
+  const clickNext = () => {
+    if (animatingRef.current) return;
+    animatingRef.current = true;
+    setWithTransition(true);
+    setIndex((p) => p + 1);
+  };
+
+  const clickPrev = () => {
+    if (animatingRef.current) return;
+    animatingRef.current = true;
+    setWithTransition(true);
+    setIndex((p) => p - 1);
+  };
+
+  // ✅ After animation ends: if we are on clone, jump to real without transition
+  const onTransitionEnd = () => {
+    animatingRef.current = false;
+
+    // moved to lastClone? (index === 0) => jump to last real slide
+    if (index === 0) {
+      setWithTransition(false);
+      setIndex(slides.length); // last real
+      return;
+    }
+
+    // moved to firstClone? (index === slides.length + 1) => jump to first real
+    if (index === slides.length + 1) {
+      setWithTransition(false);
+      setIndex(1);
+      return;
+    }
+  };
+
+  // ✅ When we turn off transition for jump, turn it back on next tick
+  useEffect(() => {
+    if (!withTransition) {
+      const t = setTimeout(() => setWithTransition(true), 30);
+      return () => clearTimeout(t);
+    }
+  }, [withTransition]);
+
+  if (track.length === 0) return null;
 
   return (
     <>
       <div className="slider-banner-container">
         <div
           className="slider-banner-wrapper"
-          style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+          style={{
+            transform: `translateX(-${index * 100}%)`,
+            transition: withTransition ? "transform 450ms ease" : "none",
+          }}
+          onTransitionEnd={onTransitionEnd}
         >
-          {slides.map((item, idx) => (
+          {track.map((item, idx) => (
             <div key={idx} className="slider-banner-image">
-              {/* ✅ One shared frame => same width/height for BOTH photo + video */}
               <div className="media-frame">
                 {item.video ? (
                   <>
@@ -80,9 +131,8 @@ const SliderBanner = () => {
                       fill
                       className="slider-banner-img"
                       sizes="(max-width: 1200px) 100vw, 1200px"
-                      priority={idx === 0}
+                      priority={idx === 1}
                     />
-
                     <div className="video-bx1">
                       <button
                         type="button"
@@ -101,7 +151,7 @@ const SliderBanner = () => {
                     fill
                     className="slider-banner-img"
                     sizes="(max-width: 1200px) 100vw, 1200px"
-                    priority={idx === 0}
+                    priority={idx === 1}
                   />
                 ) : null}
               </div>
@@ -112,6 +162,7 @@ const SliderBanner = () => {
         <button onClick={clickPrev} className="nav-button prev" type="button">
           <i className="feather icon-arrow-left" />
         </button>
+
         <button onClick={clickNext} className="nav-button next" type="button">
           <i className="feather icon-arrow-right" />
         </button>
@@ -135,6 +186,4 @@ const SliderBanner = () => {
       </Modal>
     </>
   );
-};
-
-export default SliderBanner;
+}

@@ -10,11 +10,15 @@ import { useEmailService } from "@/constant/useEmailService";
 function Header() {
   const [show, setShow] = useState<number | null>(null);
 
-  const handleclick = (index: number) => {
-    setShow(index);
-  };
+  const handleclick = (index: number) => setShow(index);
 
   const isOffcanvasOpen = show === 1;
+  const isMobileMenuOpen = show === 2;
+
+  // ✅ close menu helper (IMPORTANT)
+  const closeAllMenus = () => {
+    setShow(null);
+  };
 
   const [isActive, setIsActive] = useState<number | null>(null);
   function menuHandler(index: number) {
@@ -45,6 +49,7 @@ function Header() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!form.current) return;
+
     const result = await sendEmail(form.current);
     if (result.success) {
       console.log("SUCCESS!", result.message);
@@ -82,14 +87,15 @@ function Header() {
           <div className="main-bar clearfix bg-secondary text-white">
             <div className="container-fluid clearfix inner-bar">
               <div className="logo-header logo-dark">
-                <Link href="/">
+                <Link href="/" onClick={closeAllMenus}>
                   <Image src={IMAGES.logowhite} alt="logo" />
                 </Link>
               </div>
 
+              {/* ✅ toggler open ONLY when mobile menu open */}
               <button
                 onClick={() => handleclick(2)}
-                className={`w3menu-toggler navicon ${show ? "open" : ""}`}
+                className={`w3menu-toggler navicon ${isMobileMenuOpen ? "open" : ""}`}
                 type="button"
               >
                 <span></span>
@@ -97,34 +103,40 @@ function Header() {
                 <span></span>
               </button>
 
-              <div onClick={() => setShow(null)} className="menu-close fade-overlay"></div>
+              {/* ✅ overlay should close menu */}
+              <div onClick={closeAllMenus} className="menu-close fade-overlay"></div>
 
-              <div className={`header-nav w3menu w3menu-end mo-left ${show === 2 ? "show" : ""}`} id="W3Menu">
+              <div
+                className={`header-nav w3menu w3menu-end mo-left ${isMobileMenuOpen ? "show" : ""}`}
+                id="W3Menu"
+              >
                 <div className="logo-header logo-dark">
-                  <Link href="/">
+                  <Link href="/" onClick={closeAllMenus}>
                     <Image src={IMAGES.logo} alt="" />
                   </Link>
                 </div>
 
                 <ul className="nav navbar-nav">
                   {headerdata.map((data: HeaderItem, i: number) => {
-                    let menuClassName = data.classChange;
+                    const menuClassName = data.classChange;
 
                     if (menuClassName === "has-mega-menu") {
                       return (
                         <li
                           key={i}
-                          className={`has-mega-menu sub-menu-down auto-width menu-left ${i == isActive ? "open" : ""}`}
+                          className={`has-mega-menu sub-menu-down auto-width menu-left ${i === isActive ? "open" : ""}`}
                         >
-                          <Link href="#" onClick={() => menuHandler(i)}>
-                            <span>{data.title}</span> <i className="fas fa-chevron-down tabIndex" />
+                          <Link href="#" onClick={(e) => { e.preventDefault(); menuHandler(i); }}>
+                            <span>{data.title}</span>{" "}
+                            <i className="fas fa-chevron-down tabIndex" />
                           </Link>
 
                           <div className="mega-menu">
                             <ul className="demo-menu">
                               {data.content?.map((item, index) => (
                                 <li key={index}>
-                                  <Link href={item.to}>
+                                  {/* ✅ close menu when click */}
+                                  <Link href={item.to} onClick={closeAllMenus}>
                                     <Image src={item.image as string} alt={item.title} />
                                     <span className="menu-title">{item.title}</span>
                                   </Link>
@@ -134,34 +146,44 @@ function Header() {
                           </div>
                         </li>
                       );
-                    } else if (menuClassName === "sub-menu-down") {
+                    }
+
+                    if (menuClassName === "sub-menu-down") {
                       return (
-                        <li
-                          key={i}
-                          className={`sub-menu-down ${i == isActive ? "open" : ""}`}
-                          onClick={() => menuHandler(i)}
-                        >
-                          <Link href="#">
-                            <span>{data.title}</span> <i className="fas fa-chevron-down tabIndex" />
+                        <li key={i} className={`sub-menu-down ${i === isActive ? "open" : ""}`}>
+                          <Link
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              menuHandler(i);
+                            }}
+                          >
+                            <span>{data.title}</span>{" "}
+                            <i className="fas fa-chevron-down tabIndex" />
                           </Link>
+
                           <ul className="sub-menu">
                             {data.content?.map((item, index) => (
                               <li key={index}>
-                                <Link href={item.to}>{item.title}</Link>
+                                {/* ✅ close menu when click */}
+                                <Link href={item.to} onClick={closeAllMenus}>
+                                  {item.title}
+                                </Link>
                               </li>
                             ))}
                           </ul>
                         </li>
                       );
-                    } else {
-                      return (
-                        <li key={i}>
-                          <Link href={data.to as string}>
-                            <span>{data.title}</span>
-                          </Link>
-                        </li>
-                      );
                     }
+
+                    return (
+                      <li key={i}>
+                        {/* ✅ close menu when click */}
+                        <Link href={data.to as string} onClick={closeAllMenus}>
+                          <span>{data.title}</span>
+                        </Link>
+                      </li>
+                    );
                   })}
                 </ul>
 
@@ -193,14 +215,27 @@ function Header() {
 
               <div className={`extra-nav ${scroll ? "active" : ""}`}>
                 <div className="extra-cell">
-                  <ul className="header-right">
+                  {/* WhatsApp + Appointment + Offcanvas */}
+                  <ul className="header-right header-right-actions">
                     <li className="nav-item">
-                      <Link href="/appointment" className="btn btn-primary btn-hover1">
+                      <a
+                        href="https://wa.me/11234567890?text=Hi%20I%20want%20to%20book%20an%20appointment"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="icon-only-btn whatsapp-btn"
+                        aria-label="WhatsApp"
+                      >
+                        <i className="fa-brands fa-whatsapp" />
+                      </a>
+                    </li>
+
+                    <li className="nav-item">
+                      <Link href="/appointment" className="btn btn-primary btn-hover1 btn-appointment" onClick={closeAllMenus}>
                         Appointment
                       </Link>
                     </li>
+
                     <li className="nav-item">
-                      {/* ✅ remove bootstrap data-bs-* and use state */}
                       <button
                         onClick={() => handleclick(1)}
                         type="button"
@@ -221,7 +256,9 @@ function Header() {
         </div>
 
         {/* ✅ backdrop */}
-        {isOffcanvasOpen && <div className="dz-offcanvas-backdrop" onClick={() => setShow(null)} />}
+        {isOffcanvasOpen && (
+          <div className="dz-offcanvas-backdrop" onClick={closeAllMenus} />
+        )}
 
         {/* ✅ offcanvas */}
         <div
@@ -231,12 +268,17 @@ function Header() {
           aria-hidden={!isOffcanvasOpen}
           style={{ visibility: isOffcanvasOpen ? "visible" : "hidden" }}
         >
-          <button onClick={() => setShow(null)} type="button" className="btn-close m-t10 m-l10" aria-label="Close" />
+          <button
+            onClick={closeAllMenus}
+            type="button"
+            className="btn-close m-t10 m-l10"
+            aria-label="Close"
+          />
 
           <div className="offcanvas-body">
             <div className="widget">
               <div className="sidebar-header m-b20">
-                <Link href="/">
+                <Link href="/" onClick={closeAllMenus}>
                   <Image src={IMAGES.logo} alt="/" />
                 </Link>
               </div>
@@ -274,9 +316,20 @@ function Header() {
                 <div className="dzSubscribeMsg"></div>
                 <div className="form-group">
                   <div className="input-group mb-0">
-                    <input name="dzEmail" required type="email" className="form-control" placeholder="Your Email Address" />
+                    <input
+                      name="dzEmail"
+                      required
+                      type="email"
+                      className="form-control"
+                      placeholder="Your Email Address"
+                    />
                     <div className="input-group-addon">
-                      <button name="submit" value="Submit" type="submit" className="btn text-primary btn-transparent p-2">
+                      <button
+                        name="submit"
+                        value="Submit"
+                        type="submit"
+                        className="btn text-primary btn-transparent p-2"
+                      >
                         <i className="fa-solid fa-paper-plane" />
                       </button>
                     </div>

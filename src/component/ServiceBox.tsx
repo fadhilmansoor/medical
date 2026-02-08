@@ -2,79 +2,114 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { serviceboxdata } from "../constant/alldata";
+import {
+  Scale,
+  Scissors,
+  Sparkles,
+  Waves,
+} from "lucide-react";
+
+const serviceboxdata = [
+  {
+    id: 1,
+    title: "Weight Loss",
+    description: "Medical weight care",
+    delay: "0.2s",
+    Icon: Scale,
+  },
+  {
+    id: 2,
+    title: "Plastic Surgery",
+    description: "Advanced cosmetic care",
+    delay: "0.4s",
+    Icon: Scissors,
+  },
+  {
+    id: 3,
+    title: "Derma",
+    description: "Healthy glowing skin",
+    delay: "0.6s",
+    Icon: Sparkles,
+  },
+  {
+    id: 4,
+    title: "Hair Treatment",
+    description: "Hair growth solutions",
+    delay: "0.8s",
+    Icon: Waves,
+  },
+];
+
 
 function ServiceBox() {
   const [active, setActive] = useState(1);
 
   return (
-    <div className="row">
-      {serviceboxdata.map((data) => (
-        <div
-          className="col-xl-3 col-md-6 m-b30 wow fadeInUp"
-          data-wow-delay={data.delay}
-          data-wow-duration="0.8s"
-          key={data.id}
-        >
-          <div
-            className={`icon-bx-wraper style-3 box-hover ${
-              active === data.id ? "active" : ""
-            }`}
-            onMouseEnter={() => setActive(data.id)}
-          >
-            <div className="icon-bx-head">
-              <div className="icon-bx">
-                <span
-                  className="icon-cell"
-                  dangerouslySetInnerHTML={{ __html: data.svg1 }}
-                />
-              </div>
+    <>
+      <div className="row">
+        {serviceboxdata.map((data, i) => {
+          const Icon = data.Icon;
 
-              <span
-                className="icon-bg"
-                dangerouslySetInnerHTML={{ __html: data.svg2 }}
-              />
+          return (
+            <div
+              className="col-xl-3 col-md-6 m-b30 wow fadeInUp"
+              data-wow-delay={data.delay}
+              data-wow-duration="0.8s"
+              key={i}
+            >
+              <div
+                className={`icon-bx-wraper style-3 box-hover ${
+                  active === data.id ? "active" : ""
+                }`}
+                onMouseEnter={() => setActive(data.id)}
+              >
+                {/* ================= HEADER ================= */}
+                <div className="icon-bx-head">
+                  <div className="icon-content">
+                    {/* Logo LEFT + Title RIGHT */}
+                    <div className="d-flex align-items-center gap-3">
+                      {/* Logo */}
+                      <div className="icon-bx">
+                        <span className="icon-cell">
+                          <Icon size={36} strokeWidth={2.5} />
+                        </span>
+                      </div>
 
-              <div className="icon-content">
-                <h3 className="dz-title">{data.title}</h3>
+                      {/* Title */}
+                      <h3 className="dz-title mb-0">{data.title}</h3>
+                    </div>
 
-                {/* ✅ Sub-headings as attractive buttons */}
-                <div className="d-flex flex-wrap gap-2 m-t10">
-                  {data.sub?.map((s: any, idx: number) => (
-<Link
-  key={idx}
-  href={s.to}
-  className="btn btn-sm btn-outline-primary rounded-pill fw-bold"
-  style={{
-    fontSize: "12px",        // larger text
-    fontWeight: 700,         // thicker / bold
-    padding: "6px 14px",
-    lineHeight: "20px",
-    color: "#000",           // solid black
-    borderColor: "#000",     // optional: darker outline
-  }}
->
-  {s.label}
-</Link>
+                    {/* 20 word description */}
+                    <p className="mt-2 text-muted">{data.description}</p>
+                  </div>
 
+                  {/* Background watermark icon */}
+                  <span className="icon-bg">
+                    <Icon size={120} strokeWidth={2} />
+                  </span>
+                </div>
 
-                  ))}
+                {/* ================= FOOTER ================= */}
+                <div className="icon-bx-footer">
+                  <span className="text-badge">
+                    <i className="fa fa-circle text-primary" /> 25+ Doctors
+                  </span>
+
+                  <Link
+                    href="/service-detail"
+                    className="btn btn-square btn-primary rounded-circle"
+                  >
+                    <i className="feather icon-arrow-up-right" />
+                  </Link>
                 </div>
               </div>
             </div>
+          );
+        })}
+      </div>
 
-            <div className="icon-bx-footer">
-              <Link
-                href="/service-detail"
-                className="btn btn-square btn-primary rounded-circle"
-              >
-                <i className="feather icon-arrow-up-right" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
+   
+    </>
   );
 }
 

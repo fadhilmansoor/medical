@@ -71,15 +71,14 @@ export const headerdata: HeaderItem[] = [
             { title: "Service Detail", to: "/service-detail" },
         ],
     },
-    {
-        title: "Blogs",
-        classChange: "sub-menu-down",
-        content: [
-            { title: "Blog Grid", to: "/blog-grid" },
-            { title: "Blog List Sidebar", to: "/blog-list-sidebar" },
-            { title: "Blog Details", to: "/blog-details" },
-        ],
-    },
+{
+  title: "Blogs",
+  classChange: "sub-menu-down",
+  content: [
+    { title: "Blog Grid", to: "/blog-grid" },
+    { title: "Blog List Sidebar", to: "/blog-list-sidebar" },
+  ],
+},
     { title: "Contact Us", to: "/contact-us", },
 ]
 // footer 
@@ -389,57 +388,47 @@ export const testiswipeerdata = [
     { image: IMAGES.testimonial3, name: "Faisal Darwish" },
 ]
 // servicebox
-// servicebox
+
+import { Scale, Scissors, Sparkles, Droplets } from "lucide-react";
+
 export const serviceboxdata = [
-    {
-        id: 1,
-        delay: "0.1s",
-        title: "Transplant",
-        sub: [
-            { label: "Hair Transplant", to: "/service-detail?type=hair-transplant" },
-            { label: "Beard Transplant", to: "/service-detail?type=beard-transplant" },
-            { label: "Eyebrow Transplant", to: "/service-detail?type=eyebrow-transplant" },
-        ],
-        svg1: SVGICONS.iconcell1,
-        svg2: SVGICONS.iconbg1,
-    },
-    {
-        id: 2,
-        delay: "0.2s",
-        title: "Skin",
-        sub: [
-            { label: "Wrinkle Removal", to: "/service-detail?type=wrinkle" },
-            { label: "Acne / Pimples", to: "/service-detail?type=acne" },
-            { label: "Scar Removal", to: "/service-detail?type=scar" },
-        ],
-        svg1: SVGICONS.iconcell2,
-        svg2: SVGICONS.iconbg2,
-    },
-    {
-        id: 3,
-        delay: "0.3s",
-        title: "Laser",
-        sub: [
-            { label: "Laser Hair Removal", to: "/service-detail?type=laser-hair" },
-            { label: "Tattoo Removal", to: "/service-detail?type=tattoo" },
-            { label: "Skin Tightening", to: "/service-detail?type=tightening" },
-        ],
-        svg1: SVGICONS.iconcell3,
-        svg2: SVGICONS.iconbg3,
-    },
-    {
-        id: 4,
-        delay: "0.4s",
-        title: "Dental",
-        sub: [
-            { label: "Teeth Whitening", to: "/service-detail?type=whitening" },
-            { label: "Braces / Aligners", to: "/service-detail?type=braces" },
-            { label: "Dental Implants", to: "/service-detail?type=implants" },
-        ],
-        svg1: SVGICONS.iconcell4,
-        svg2: SVGICONS.iconbg4,
-    },
-    {
+  {
+    id: 1,
+    title: "Weight Loss",
+    description:
+      "Personalized weight loss programs combining medical expertise, nutrition guidance, and advanced treatments to achieve sustainable, healthy, and long-term results.",
+    delay: "0.2s",
+    Icon: Scale,
+    BgIcon: Scale,
+  },
+  {
+    id: 2,
+    title: "Plastic Surgery",
+    description:
+      "Advanced cosmetic and reconstructive procedures performed by expert surgeons, focusing on natural enhancement, safety, precision, and confident aesthetic outcomes.",
+    delay: "0.4s",
+    Icon: Scissors,
+    BgIcon: Scissors,
+  },
+  {
+    id: 3,
+    title: "Derma",
+    description:
+      "Comprehensive dermatology care offering advanced skin treatments for acne, pigmentation, aging, and overall skin health using modern technology.",
+    delay: "0.6s",
+    Icon: Sparkles,
+    BgIcon: Sparkles,
+  },
+  {
+    id: 4,
+    title: "Hair Treatment",
+    description:
+      "Specialized hair restoration and treatment solutions addressing hair loss, thinning, and scalp health with proven medical and aesthetic techniques.",
+    delay: "0.8s",
+    Icon: Droplets,
+    BgIcon: Droplets,
+  },
+   {
         id: 5,
         delay: "0.5s",
         title: "Body",

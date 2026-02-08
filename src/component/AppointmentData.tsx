@@ -18,11 +18,13 @@ function AppointmentData() {
     const payload = {
       name: String(formData.get("dzName") || ""),
       email: String(formData.get("dzEmail") || ""),
+      phone: String(formData.get("dzPhone") || ""),
       service: selectCat,
+      message: String(formData.get("dzMessage") || ""), // ✅ OPTIONAL
     };
 
-    if (!payload.name || !payload.email ) {
-      toast.error("Please fill Name, Email");
+    if (!payload.name || !payload.email || !payload.phone) {
+      toast.error("Please fill Name, Email and Phone Number");
       return;
     }
 
@@ -59,17 +61,17 @@ function AppointmentData() {
     >
       <div className="container">
         <div className="row align-items-end content-wrapper style-8">
-          <div className="col-lg-6 text-center wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">
-            <Image src={IMAGES.about3png} alt="/" />
+          <div className="col-lg-6 text-center wow fadeInUp">
+            <Image src={IMAGES.about3png} alt="Appointment" />
           </div>
 
-          <div className="col-lg-6" data-bottom-top="transform: translateY(100px)" data-top-bottom="transform: translateY(-10px)">
+          <div className="col-lg-6">
             <div className="form-wrapper style-1 text-vr-wrapper">
               <div className="text-vertical">Appointment Now</div>
 
               <div
                 className="form-body bg-primary background-blend-burn"
-                style={{ backgroundImage: `url(${IMAGES.bg2png.src})`, backgroundSize: "cover" }}
+                style={{ backgroundImage: `url(${IMAGES.bg2png.src})` }}
               >
                 <div className="title-head">
                   <h2 className="form-title m-b0">
@@ -79,44 +81,98 @@ function AppointmentData() {
 
                 <form onSubmit={handleSubmit} className="dzForm">
                   <div className="row">
+
+                    {/* Name */}
                     <div className="col-sm-6 m-b30">
                       <div className="form-floating floating-underline input-light">
-                        <input name="dzName" type="text" className="form-control" id="inputYourName" placeholder="Your Name" />
-                        <label htmlFor="inputYourName">Your Name</label>
+                        <input
+                          name="dzName"
+                          type="text"
+                          className="form-control input-light"
+                          placeholder="Your Name"
+                        />
+                        <label>Your Name</label>
                       </div>
                     </div>
 
+                    {/* Phone */}
                     <div className="col-sm-6 m-b30">
                       <div className="form-floating floating-underline input-light">
-                        <input name="dzEmail" type="email" className="form-control" id="inputYourEmail" placeholder="Your Email" />
-                        <label htmlFor="inputYourEmail">Your Email</label>
+                        <input
+                          name="dzPhone"
+                          type="tel"
+                          className="form-control dz-number input-light"
+                          placeholder="Phone Number"
+                        />
+                        <label>Phone Number</label>
                       </div>
                     </div>
 
-
-
+                    {/* Email */}
                     <div className="col-sm-6 m-b30">
                       <div className="form-floating floating-underline input-light">
-                        <Dropdown className="form-control bs-select">
-                          <Dropdown.Toggle as="div">{selectCat}</Dropdown.Toggle>
+                        <input
+                          name="dzEmail"
+                          type="email"
+                          className="form-control input-light"
+                          placeholder="Your Email"
+                        />
+                        <label>Your Email</label>
+                      </div>
+                    </div>
+
+                    {/* Service */}
+                    <div className="col-sm-6 m-b30">
+                      <div className="form-floating floating-underline input-light">
+                        <Dropdown className="form-control bs-select input-light">
+                          <Dropdown.Toggle as="div" className="form-control input-light">
+                            {selectCat}
+                          </Dropdown.Toggle>
                           <Dropdown.Menu>
-                            <Dropdown.Item onClick={() => setSelectCat("Angioplasty")}>Angioplasty</Dropdown.Item>
-                            <Dropdown.Item onClick={() => setSelectCat("Cardiology")}>Cardiology</Dropdown.Item>
-                            <Dropdown.Item onClick={() => setSelectCat("Dental")}>Dental</Dropdown.Item>
-                            <Dropdown.Item onClick={() => setSelectCat("Eye Care")}>Eye Care</Dropdown.Item>
+                            <Dropdown.Item onClick={() => setSelectCat("Angioplasty")}>
+                              Angioplasty
+                            </Dropdown.Item>
+                            <Dropdown.Item onClick={() => setSelectCat("Cardiology")}>
+                              Cardiology
+                            </Dropdown.Item>
+                            <Dropdown.Item onClick={() => setSelectCat("Dental")}>
+                              Dental
+                            </Dropdown.Item>
+                            <Dropdown.Item onClick={() => setSelectCat("Eye Care")}>
+                              Eye Care
+                            </Dropdown.Item>
                           </Dropdown.Menu>
                         </Dropdown>
                       </div>
                     </div>
 
+                    {/* ✅ Message (OPTIONAL, same font & height) */}
+                    <div className="col-sm-12 m-b30">
+                      <div className="form-floating floating-underline input-light">
+                        <textarea
+                          name="dzMessage"
+                          className="form-control input-light"
+                          rows={6}
+                          placeholder="Message (Optional)"
+                        />
+                        <label>Message (Optional)</label>
+                      </div>
+                    </div>
+
+                    {/* Submit */}
                     <div className="col-sm-12">
-                      <button type="submit" className="btn btn-lg btn-icon btn-white hover-secondary btn-shadow" disabled={submitting}>
+                      <button
+                        type="submit"
+                        className="btn btn-lg btn-icon btn-white hover-secondary btn-shadow"
+                        disabled={submitting}
+                      >
                         {submitting ? "Sending..." : "Appointment"}
                         <span className="right-icon">
                           <i className="feather icon-arrow-right" />
                         </span>
                       </button>
                     </div>
+
                   </div>
                 </form>
 
