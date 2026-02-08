@@ -52,6 +52,10 @@ export default function SliderBanner() {
   const [show, setShow] = useState(false);
   const [activeVideoUrl, setActiveVideoUrl] = useState<string | null>(null);
 
+  // ✅ Auto-slide controls
+  const [isHovering, setIsHovering] = useState(false);
+  const AUTO_DELAY = 2000;
+
   const handleClose = () => {
     setShow(false);
     setActiveVideoUrl(null);
@@ -107,11 +111,30 @@ export default function SliderBanner() {
     }
   }, [withTransition]);
 
+  // ✅ AUTO SLIDE (pause on hover + pause when modal open)
+  useEffect(() => {
+    if (slides.length <= 1) return;
+    if (show) return; // pause while video modal open
+    if (isHovering) return; // pause while hovering
+
+    const timer = setInterval(() => {
+      // safe: clickNext already checks animatingRef
+      clickNext();
+    }, AUTO_DELAY);
+
+    return () => clearInterval(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [show, isHovering]); // keep minimal deps to avoid interval reset spam
+
   if (track.length === 0) return null;
 
   return (
     <>
-      <div className="slider-banner-container">
+      <div
+        className="slider-banner-container"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
         <div
           className="slider-banner-wrapper"
           style={{

@@ -54206,3 +54206,10 @@ footer.site-footer.footer-dark .fb-inner {
     column-gap: 10px;
   }
 }
+/* appoiment form font */
+.font-appointment h1,
+.font-appointment h2,
+.font-appointment h3,
+.font-appointment .form-title {
+  font-weight: 600;
+}

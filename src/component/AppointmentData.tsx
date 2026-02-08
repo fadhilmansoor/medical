@@ -183,6 +183,7 @@ function AppointmentData() {
       </div>
     </section>
   );
+  
 }
 
 export default AppointmentData;
