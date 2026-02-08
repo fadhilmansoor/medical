@@ -54164,3 +54164,45 @@ footer.site-footer.footer-dark .fb-inner {
       top: 10px;
     }
   }
+
+
+
+  /* === Our Contacts: true table layout === */
+.footer-contact-table {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-contact-table li {
+  display: grid;
+  grid-template-columns: 26px 1fr; /* fixed icon | flexible text */
+  column-gap: 12px;
+  align-items: start;
+  margin-bottom: 16px;
+}
+
+.footer-contact-table .icon {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.footer-contact-table .icon i {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.footer-contact-table .text {
+  display: block;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* Mobile: KEEP SAME TABLE, just slightly tighter */
+@media (max-width: 576px) {
+  .footer-contact-table li {
+    grid-template-columns: 24px 1fr;
+    column-gap: 10px;
+  }
+}

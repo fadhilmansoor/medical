@@ -87,20 +87,80 @@ export const footerdata1 = [
     { delay: '0.6s', icon: <i className="feather icon-mail" />, title: 'Send us a Mail', paragraph: <Link href="mailto:info@example.com" className="text-body">info@example.com</Link>, },
     { delay: '0.8s', icon: <i className="feather icon-clock" />, title: 'Opening Time', paragraph: "Mon -Sat: 7:00 - 17:00", },
 ]
-export const footerdata2 = [
-    {
-        title: 'Our Services', span1: 'Emergency Care', span2: 'Operation Theater', span3: 'Medical Checkup', span4: 'Diagnostic Center', span5: 'Outdoor Checkup',
-        link1: '/service-detail', link2: '/service-detail', link3: '/service-detail', link4: '/service-detail', link5: '/service-detail', delay: '0.4s',
-    },
-    {
-        title: 'Useful Links', span1: 'Privacy Policy', span2: 'Terms & Conditions', span3: 'Contact Us', span4: 'Latest News', span5: 'Our Sitemap',
-        link1: '#', link2: '#', link3: '/contact-us', link4: '/blog-grid', link5: '#', delay: '0.6s',
-    },
-    {
-        title: 'Quick Links', span1: 'About Us', span2: 'Our Services', span3: 'Our Team', span4: 'Appointments', span5: 'Contact Us',
-        link1: '/about-us', link2: '/services', link3: '/team', link4: '/appointment', link5: '/contact-us', delay: '1.0s',
-    },
-]
+
+
+export const footerdata = [
+  {
+    title: "Our Services",
+    items: [
+      { label: "Emergency Care", link: "/service-detail" },
+      { label: "Operation Theater", link: "/service-detail" },
+      { label: "Medical Checkup", link: "/service-detail" },
+      { label: "Diagnostic Center", link: "/service-detail" },
+      { label: "Outdoor Checkup", link: "/service-detail" },
+    ],
+    delay: "0.4s",
+  },
+  {
+    title: "Useful Links",
+    items: [
+      { label: "Privacy Policy", link: "#" },
+      { label: "Terms & Conditions", link: "#" },
+      { label: "Contact Us", link: "/contact-us" },
+      { label: "Latest News", link: "/blog-grid" },
+      { label: "Our Sitemap", link: "#" },
+    ],
+    delay: "0.6s",
+  },
+  {
+    title: "Quick Links",
+    items: [
+      { label: "About Us", link: "/about-us" },
+      { label: "Our Services", link: "/services" },
+      { label: "Our Team", link: "/team" },
+      { label: "Appointments", link: "/appointment" },
+      { label: "Contact Us", link: "/contact-us" },
+    ],
+    delay: "1.0s",
+  },
+  {
+    title: "Our Contacts",
+    items: [
+      {
+        icon: <i className="feather icon-map-pin" />,
+        label: (
+          <>
+            123 Medical Street,
+            <br />
+            New York, NY 10001
+          </>
+        ),
+      },
+      {
+        icon: <i className="feather icon-phone" />,
+        label: (
+          <Link href="tel:+11234567890" className="text-body">
+            +1 123 456 7890
+          </Link>
+        ),
+      },
+      {
+        icon: <i className="feather icon-mail" />,
+        label: (
+          <Link href="mailto:info@example.com" className="text-body">
+            info@example.com
+          </Link>
+        ),
+      },
+      {
+        icon: <i className="feather icon-clock" />,
+        label: "Mon – Sat: 7:00 AM – 5:00 PM",
+      },
+    ],
+    delay: "1.2s",
+  },
+];
+
 // pages 
 // testimonial 
 export const testidata = [
