@@ -47409,11 +47409,21 @@ table.wishlist_table {
 }
 
 @media only screen and (max-width: 991px) {
-  .month-deal {
-    margin-top: 20px;
+  .site-header .extra-nav .extra-cell > * {
+    margin-left: 0;  /* Remove gap between appointment button and hamburger */
+    gap: 0;  /* Also remove gap property */
   }
 }
 
+.site-header .extra-nav .header-right {
+  margin-left: 0 !important;
+  gap: 0 !important;
+}
+
+.site-header .extra-nav .header-right .nav-item {
+  margin: 0;
+  padding: 0;
+}
 @media only screen and (max-width: 575px) {
   .month-deal {
     flex-direction: column;
@@ -54216,4 +54226,157 @@ footer.site-footer.footer-dark .fb-inner {
 
 .service-box-container * {
           font-family: 'Poppins', sans-serif;
-        }
+}
+
+
+
+/* ===================================
+   MOBILE BOTTOM NAV - ISOLATED STYLES
+   LEFT SIDE LAYOUT
+   =================================== */
+
+/* Desktop - keep normal behavior */
+@media only screen and (min-width: 992px) {
+  .extra-nav.mobile-bottom-nav {
+    position: static;
+    float: right;
+  }
+}
+
+/* Mobile ONLY - new bottom nav */
+@media only screen and (max-width: 991px) {
+  
+  .site-header .sticky-header .extra-nav.mobile-bottom-nav {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    width: 100vw !important;
+    height: 70px !important;
+    background: #fff !important;
+    box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1) !important;
+    z-index: 9999 !important;
+    padding: 0 15px !important;
+    margin: 0 !important;
+    float: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .extra-nav.mobile-bottom-nav .extra-cell {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .extra-nav.mobile-bottom-nav .header-right.mobile-nav-list {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    list-style: none !important;
+  }
+
+  .extra-nav.mobile-bottom-nav .mobile-nav-list .mobile-nav-item {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  /* Appointment button on left */
+  .extra-nav.mobile-bottom-nav .mobile-nav-list .mobile-nav-item:first-child {
+    order: 1 !important;
+  }
+
+  /* Hamburger on right */
+  .extra-nav.mobile-bottom-nav .mobile-nav-list .mobile-nav-item:last-child {
+    order: 2 !important;
+    margin-left: auto !important;
+  }
+
+  .extra-nav.mobile-bottom-nav .mobile-nav-item .mobile-appointment-btn {
+    margin: 0 !important;
+    padding: 14px 28px !important;
+    white-space: nowrap !important;
+    border-radius: 25px !important;
+    background-color: #09BAB3 !important;
+    border-color: #09BAB3 !important;
+    color: #fff !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    display: inline-block !important;
+  }
+
+  .extra-nav.mobile-bottom-nav .mobile-nav-item .mobile-appointment-btn:hover,
+  .extra-nav.mobile-bottom-nav .mobile-nav-item .mobile-appointment-btn:focus,
+  .extra-nav.mobile-bottom-nav .mobile-nav-item .mobile-appointment-btn:active {
+    background-color: #08a89f !important;
+    border-color: #08a89f !important;
+    color: #fff !important;
+  }
+
+  .extra-nav.mobile-bottom-nav .mobile-nav-item .mobile-toggle-btn {
+    width: 50px !important;
+    height: 50px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+  }
+
+  .extra-nav.mobile-bottom-nav .mobile-toggle-btn span {
+    display: block !important;
+    width: 25px !important;
+    height: 3px !important;
+    background: #333 !important;
+    border-radius: 2px !important;
+    transition: all 0.3s ease !important;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .site-header .sticky-header .extra-nav.mobile-bottom-nav {
+    height: 65px !important;
+    padding: 0 15px !important;
+  }
+
+  .extra-nav.mobile-bottom-nav .mobile-nav-item .mobile-appointment-btn {
+    font-size: 14px !important;
+    padding: 12px 24px !important;
+  }
+
+  .extra-nav.mobile-bottom-nav .mobile-nav-item .mobile-toggle-btn {
+    width: 45px !important;
+    height: 45px !important;
+  }
+
+  .extra-nav.mobile-bottom-nav .mobile-toggle-btn span {
+    width: 22px !important;
+  }
+}
+
+/* iPhone safe area support */
+@supports (padding: max(0px)) {
+  @media only screen and (max-width: 991px) {
+    .site-header .sticky-header .extra-nav.mobile-bottom-nav {
+      padding-bottom: calc(15px + env(safe-area-inset-bottom)) !important;
+      height: calc(70px + env(safe-area-inset-bottom)) !important;
+    }
+  }
+}

@@ -212,23 +212,31 @@ function Header() {
                   </ul>
                 </div>
               </div>
-
-                 <div className={`extra-nav ${scroll ? 'active' : ''}`}>
-                                <div className="extra-cell">
-                                    <ul className="header-right">
-                                        <li className="nav-item">
-                                            <Link href="/appointment" className="btn btn-primary btn-hover1"> Appointment </Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <button onClick={() => handleclick(1)} type="button" className="toggle-nav-btn" data-bs-toggle="offcanvas" data-bs-target="#headerSidebar" aria-controls="offcanvasLeft">
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                  <div className={`extra-nav mobile-bottom-nav ${scroll ? 'active' : ''}`}>
+  <div className="extra-cell">
+    <ul className="header-right mobile-nav-list">
+      <li className="nav-item mobile-nav-item">
+        <Link href="/appointment" className="btn btn-primary btn-hover1 mobile-appointment-btn">
+          Appointment
+        </Link>
+      </li>
+      <li className="nav-item mobile-nav-item">
+        <button 
+          onClick={() => handleclick(1)} 
+          type="button" 
+          className="toggle-nav-btn mobile-toggle-btn" 
+          data-bs-toggle="offcanvas" 
+          data-bs-target="#headerSidebar" 
+          aria-controls="offcanvasLeft"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
             </div>
           </div>
         </div>
